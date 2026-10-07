@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RAHUL.exe</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        background: #050505;
+        color: #00ff66;
+        font-family: "Courier New", monospace;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .terminal {
+        width: 92%;
+        max-width: 900px;
+        height: 90vh;
+        border: 1px solid #00ff66;
+        box-shadow: 0 0 25px rgba(0, 255, 100, 0.25);
+        padding: 25px;
+        overflow-y: auto;
+        background: #020202;
+    }
+
+    .header {
+        color: #00ff66;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .line {
+        border-top: 1px solid #00ff66;
+        margin: 8px 0;
+    }
+
+    .output {
+        white-space: pre-wrap;
+        line-height: 1.6;
+        font-size: 16px;
+    }
+
+    .green {
+        color: #00ff66;
+    }
+
+    .red {
+        color: #ff3333;
+    }
+
+    .yellow {
+        color: #ffff55;
+    }
+
+    .white {
+        color: white;
+    }
+
+    .birthday {
+        text-align: center;
+        margin-top: 30px;
+        animation: glow 1.5s infinite alternate;
+    }
+
+    .birthday h1 {
+        color: #ff4d6d;
+        font-size: clamp(28px, 6vw, 55px);
+    }
+
+    .birthday h2 {
+        color: #ffd166;
+        font-size: clamp(24px, 5vw, 45px);
+    }
+
+    .message {
+        color: white;
+        text-align: center;
+        line-height: 1.8;
+        font-size: 17px;
+        margin-top: 25px;
+    }
+
+    .signature {
+        text-align: center;
+        color: #00ff66;
+        margin-top: 35px;
+        font-size: 18px;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 9px;
+        height: 18px;
+        background: #00ff66;
+        animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    @keyframes glow {
+        from {
+            text-shadow: 0 0 5px #ff4d6d;
+        }
+
+        to {
+            text-shadow:
+                0 0 10px #ff4d6d,
+                0 0 25px #ff4d6d;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .terminal {
+            height: 95vh;
+            padding: 15px;
+        }
+
+        .output {
+            font-size: 13px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="terminal">
+
+    <div class="header">
+        ========================================<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RAHUL // SECURE TERMINAL<br>
+        ========================================
+    </div>
+
+    <div id="output" class="output"></div>
+
+    <div id="birthday" style="display:none;">
+
+        <div class="birthday">
+
+            <div class="line"></div>
+
+            <h1>🎂 HAPPY BIRTHDAY 🎂</h1>
+
+            <h2>SUSMI</h2>
+
+            <div class="line"></div>
+
+        </div>
+
+        <div class="message">
+
+            <p>
+                You have been successfully hacked...
+            </p>
+
+            <p>
+                ...by a birthday wish. 😂
+            </p>
+
+            <p>
+                Dear Susmi,<br><br>
+
+                Happy Birthday! 🎉
+            </p>
+
+            <p>
+                I hope your day is filled with happiness,
+                lots of laughter, amazing memories,
+                and of course... CAKE. 🎂
+            </p>
+
+            <p>
+                May this year bring you everything
+                you've been wishing for. ❤️
+            </p>
+
+            <p>
+                Stay awesome.<br>
+                Stay happy.
+            </p>
+
+            <p>
+                And remember...
+            </p>
+
+            <p class="red">
+                YOU HAVE BEEN HACKED BY RAHUL.exe 😎
+            </p>
+
+        </div>
+
+        <div class="signature">
+
+            ----------------------------------------<br>
+            MISSION STATUS<br>
+            ----------------------------------------<br><br>
+
+            Target: SUSMI<br>
+            Mission: Birthday Wish<br>
+            Status: SUCCESS<br>
+            Hacker: RAHUL.exe<br><br>
+
+            ========================================<br>
+            END OF TRANSMISSION<br>
+            ========================================
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+const output = document.getElementById("output");
+const birthday = document.getElementById("birthday");
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function addLine(text, className = "") {
+
+    const line = document.createElement("div");
+
+    line.className = className;
+
+    line.textContent = text;
+
+    output.appendChild(line);
+
+    document.querySelector(".terminal").scrollTop =
+        document.querySelector(".terminal").scrollHeight;
+}
+
+
+async function loading(message) {
+
+    const line = document.createElement("div");
+
+    output.appendChild(line);
+
+    for (let i = 0; i <= 20; i++) {
+
+        let bar = "";
+
+        for (let j = 0; j < 20; j++) {
+
+            bar += j < i ? "#" : " ";
+
+        }
+
+        let percent = i * 5;
+
+        line.textContent =
+            "[+] " +
+            message +
+            " [" +
+            bar +
+            "] " +
+            percent +
+            "%";
+
+        await sleep(60);
+    }
+}
+
+
+async function startProgram() {
+
+    await sleep(700);
+
+    addLine("[+] Initializing birthday protocol...");
+    await sleep(500);
+
+    await loading("Loading encrypted modules...");
+    await loading("Bypassing birthday firewall...");
+    await loading("Searching target database...");
+
+    await sleep(500);
+
+    addLine("");
+    addLine("[+] TARGET FOUND: SUSMI", "yellow");
+
+    await sleep(800);
+
+    addLine("[-] Establishing secure connection...");
+    await sleep(800);
+
+    await loading("Decrypting SUSMI_BIRTHDAY.exe");
+
+    await sleep(500);
+
+    addLine("");
+    addLine("[+] ACCESS GRANTED.", "green");
+
+    await sleep(1200);
+
+    addLine("");
+    addLine("You have been successfully hacked...", "white");
+
+    await sleep(1200);
+
+    addLine("...");
+    
+    await sleep(800);
+
+    addLine("...by a birthday wish. 😂", "yellow");
+
+    await sleep(1800);
+
+    birthday.style.display = "block";
+
+    document.querySelector(".terminal").scrollTop =
+        document.querySelector(".terminal").scrollHeight;
+}
+
+startProgram();
+
+</script>
+
+</body>
+</html>
